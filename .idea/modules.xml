@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ColorPickerHex.iml" filepath="$PROJECT_DIR$/ColorPickerHex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/colorpickerhex/colorpickerhex.iml" filepath="$PROJECT_DIR$/colorpickerhex/colorpickerhex.iml" />
+    </modules>
+  </component>
+</project>
