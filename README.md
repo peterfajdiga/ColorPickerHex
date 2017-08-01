@@ -18,11 +18,11 @@ compile project(":ColorPickerHex")
 
 
 ## Usage
-Simply add the following to your xml file containing your preferences:
+Simply use peterfajdiga.colorpickerhex.ColorPreference in your xml file containing your preferences. Example:
 ```
 <peterfajdiga.colorpickerhex.ColorPreference
         android:defaultValue="0xff000000"
         android:key="pref_itemcolor"
         android:title="Item color" />
 ```
-The above attributes are just an example. The color is stored as an integer.
+The color is stored as an integer.
