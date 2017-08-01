@@ -2,7 +2,7 @@
  Originally by CyanogenMod
  Modified by Peter Fajdiga
 
- Original license follows:
+ Original header comment follows:
  * Copyright (C) 2010 Daniel Nilsson
  * Copyright (C) 2012 The CyanogenMod Project
  *
