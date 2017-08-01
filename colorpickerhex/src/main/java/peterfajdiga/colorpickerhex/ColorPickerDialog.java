@@ -119,6 +119,7 @@ public class ColorPickerDialog extends AlertDialog implements
     public void setAlphaSliderVisible(boolean visible) {
         mHexColorInput.setFilters(new InputFilter[] { new InputFilter.LengthFilter(visible ? 8 : 6) } );
         mColorPicker.setAlphaSliderVisible(visible);
+        onColorChanged(getColor());  // update code format
     }
 
     public int getColor() {

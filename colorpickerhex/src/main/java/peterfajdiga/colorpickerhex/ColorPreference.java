@@ -25,6 +25,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -42,10 +43,12 @@ public class ColorPreference extends DialogPreference {
     private ImageView mColorPreview;
 
     private int mColorValue;
+    private boolean mEditAlpha = false;
 
     public ColorPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mColorValue = getDefaultColor(context.getResources(), attrs);
+        mColorValue = getDefaultColor(attrs);
+        mEditAlpha = getEditAlpha(attrs);
         init();
     }
 
@@ -55,18 +58,29 @@ public class ColorPreference extends DialogPreference {
         init();
     }
 
-    private int getDefaultColor(final Resources res, final AttributeSet attrs) {
+    private int getDefaultColor(final AttributeSet attrs) {
         final int defaultColor;
         final int defaultValueStr = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", 0);
         if (defaultValueStr == 0) {
             defaultColor = attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "defaultValue", DEFAULT_COLOR);
         } else {
-            defaultColor = res.getInteger(defaultValueStr);
+            defaultColor = getContext().getResources().getInteger(defaultValueStr);
         }
         return defaultColor;
     }
 
+    private boolean getEditAlpha(final AttributeSet attrs) {
+        final TypedArray styledAttributes = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ColorPreference, 0, 0);
+        final boolean editAlpha = styledAttributes.getBoolean(R.styleable.ColorPreference_editAlpha, false);
+        styledAttributes.recycle();
+        return editAlpha;
+    }
+
     private void init() {
+        if (!mEditAlpha) {
+            // full opacity
+            mColorValue |= 0xff000000;
+        }
         setLayoutResource(R.layout.preference_color);
         mResources = getContext().getResources();
     }
@@ -129,7 +143,7 @@ public class ColorPreference extends DialogPreference {
 //    @Override
     protected Dialog createDialog() {
         final ColorPickerDialog d = new ColorPickerDialog(getContext(), mColorValue, true);
-//        d.setAlphaSliderVisible(true);
+        d.setAlphaSliderVisible(mEditAlpha);
 
         d.setButton(AlertDialog.BUTTON_POSITIVE, mResources.getString(android.R.string.ok),
                 new DialogInterface.OnClickListener() {
