@@ -85,20 +85,6 @@ public class ColorPreference extends DialogPreference {
         mResources = getContext().getResources();
     }
 
-//    public void onStart() {
-//        ColorPickerDialog d = (ColorPickerDialog) getDialog();
-//        if (d != null) {
-//            d.onStart();
-//        }
-//    }
-//
-//    public void onStop() {
-//        ColorPickerDialog d = (ColorPickerDialog) getDialog();
-//        if (d != null) {
-//            d.onStop();
-//        }
-//    }
-
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);
@@ -135,12 +121,9 @@ public class ColorPreference extends DialogPreference {
 
     @Override
     protected void showDialog(Bundle state) {
-        super.showDialog(state);
-
-        final ColorPickerDialog d = (ColorPickerDialog) getDialog();
+        createDialog().show();
     }
 
-//    @Override
     protected Dialog createDialog() {
         final ColorPickerDialog d = new ColorPickerDialog(getContext(), mColorValue, true);
         d.setAlphaSliderVisible(mEditAlpha);
