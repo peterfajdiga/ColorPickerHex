@@ -60,11 +60,11 @@ public class ColorPreference extends DialogPreference {
 
     private int getDefaultColor(final AttributeSet attrs) {
         final int defaultColor;
-        final int defaultValueStr = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", 0);
-        if (defaultValueStr == 0) {
+        final int defaultValueRes = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", 0);
+        if (defaultValueRes == 0) {
             defaultColor = attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "defaultValue", DEFAULT_COLOR);
         } else {
-            defaultColor = getContext().getResources().getInteger(defaultValueStr);
+            defaultColor = getContext().getResources().getInteger(defaultValueRes);
         }
         return defaultColor;
     }
@@ -125,7 +125,7 @@ public class ColorPreference extends DialogPreference {
     }
 
     protected Dialog createDialog() {
-        final ColorPickerDialog d = new ColorPickerDialog(getContext(), mColorValue, true);
+        final ColorPickerDialog d = new ColorPickerDialog(getContext(), mColorValue, true, getTitle());
         d.setAlphaSliderVisible(mEditAlpha);
 
         d.setButton(AlertDialog.BUTTON_POSITIVE, mResources.getString(android.R.string.ok),

@@ -53,9 +53,12 @@ public class ColorPickerDialog extends AlertDialog implements
 
     private ColorPickerView.OnColorChangedListener mListener;
 
-    protected ColorPickerDialog(Context context, int initialColor, boolean enableAlpha) {
+    protected ColorPickerDialog(Context context, int initialColor, boolean enableAlpha, CharSequence title) {
         super(context);
-        init(context, initialColor, enableAlpha);
+        if (title == null) {
+            title = context.getString(R.string.edit_color);
+        }
+        init(context, initialColor, enableAlpha, title);
     }
 
     /**
@@ -65,7 +68,7 @@ public class ColorPickerDialog extends AlertDialog implements
      * @param color - the color to set
      * @param enableAlpha - show an alpha slider?
      */
-    private void init(Context context, int color, boolean enableAlpha) {
+    private void init(Context context, int color, boolean enableAlpha, CharSequence title) {
         // To fight color banding.
         getWindow().setFormat(PixelFormat.RGBA_8888);
 
@@ -86,7 +89,7 @@ public class ColorPickerDialog extends AlertDialog implements
         mHexColorInput.setOnFocusChangeListener(this);
 
         setView(layout);
-        setTitle(R.string.edit_color);
+        setTitle(title);
     }
 
     @Override
