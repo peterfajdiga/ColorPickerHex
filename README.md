@@ -28,6 +28,7 @@ Simply use peterfajdiga.colorpickerhex.ColorPreference in your xml file containi
 <peterfajdiga.colorpickerhex.ColorPreference
         android:defaultValue="0xff000000"
         android:key="pref_itemcolor"
-        android:title="Item color" />
+        android:title="Item color"
+        app:editAlpha="false"/>
 ```
-The color is stored as an integer.
+The color is stored as an integer. Set *editAlpha* to *true* if you want to enable editing the alpha (opacity) component of the color. If set to *false* (default), then the stored color will be fully opaque.
