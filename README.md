@@ -3,6 +3,8 @@ A color picker preference for Android that enables selecting colors using slider
 
 It is heavily based on [notification light settings from CyanogenMod](https://github.com/CyanogenMod/android_packages_apps_Settings "CyanogenMod's android_packages_apps_Settings").
 
+<img src="https://user-images.githubusercontent.com/22796326/29662907-3515deb4-88c9-11e7-8bf0-40518a2eeaeb.png" alt="Preferences" height="480"> <img src="https://user-images.githubusercontent.com/22796326/29662908-3535be46-88c9-11e7-9782-97c19cdb44ec.png" alt="Editing a solid color" height="480"> <img src="https://user-images.githubusercontent.com/22796326/29662909-35381132-88c9-11e7-9960-a96c72eb2ad3.png" alt="Editing a color with alpha channel" height="480">
+
 
 ## Installation
 1. Copy contents into app/libs/ColorPickerHex inside of your project. If you're using git with your project, I recommend cloning this repo as a submodule like so:
